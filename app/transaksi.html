@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Riwayat Transaksi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="dashboard.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Dashboard</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="proyek.html"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2-2h9a2 2 0 0 1 2 2z"/><path d="M1 13v4a2 2 0 0 0 2 2h4"/><path d="M12 11V7"/></svg><span>Proyek Saya</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="album.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Album</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="penyimpanan.html"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Penyimpanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="paket-saya.html"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Paket Saya</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link active" href="transaksi.html"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Transaksi</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pemesanan.html"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3.3 8.3L12 13l8.7-4.7"/><path d="M12 13V21"/></svg><span>Pemesanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="profil.html"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profil</span></a></li>
+      </ul>
+    </aside>
+
+    <div class="app-main">
+      <div class="section-header" style="text-align:left;margin-bottom:28px;">
+        <span class="section-eyebrow">Catatan Keuangan</span>
+        <h2 class="section-title">Riwayat Transaksi & Pembayaran</h2>
+        <p class="section-desc">Pantau status faktur, bukti pelunasan, dan konfirmasi tagihan layanan Anda.</p>
+      </div>
+
+      <div class="filter-bar">
+        <select id="status-filter" class="form-select" style="width:auto;min-width:200px;">
+          <option value="">Semua Status Transaksi</option>
+          <option value="lunas">Lunas</option>
+          <option value="menunggu">Menunggu Pembayaran</option>
+          <option value="gagal">Gagal / Dibatalkan</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Nomor Order / Invoice</th>
+              <th>Jumlah Nominal</th>
+              <th>Status</th>
+              <th>Tindakan</th>
+            </tr>
+          </thead>
+          <tbody id="transaksi-body">
+            <tr><td colspan="5" style="text-align:center;padding:24px;">Memuat transaksi...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/store.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.auth.requireLogin("user")) return;
+
+      const user = window.auth.getCurrentUser();
+      const userId = user.id;
+
+      const tbody = document.getElementById("transaksi-body");
+      const statusFilter = document.getElementById("status-filter");
+
+      function renderTable() {
+        const allPayments = window.store.getAll("payments").filter(p => p.userId === userId);
+        const filterVal = statusFilter.value;
+        const filtered = filterVal ? allPayments.filter(p => p.status === filterVal) : allPayments;
+
+        if (!filtered.length) {
+          tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--c-muted);padding:24px;">Tidak ada catatan transaksi ditemukan.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = filtered.map(p => {
+          let badgeClass = "badge-warning";
+          if (p.status === "lunas") badgeClass = "badge-success";
+          else if (p.status === "gagal") badgeClass = "badge-danger";
+
+          return `
+            <tr>
+              <td>${window.formatDate(p.createdAt)}</td>
+              <td><strong>${window.escapeHtml(p.orderId)}</strong></td>
+              <td style="font-weight:600;color:var(--c-ink);">${window.formatRupiah(p.amountIdr)}</td>
+              <td><span class="badge ${badgeClass}">${window.escapeHtml(p.status)}</span></td>
+              <td>
+                ${p.status === "menunggu" ? `
+                  <button type="button" class="btn btn-primary btn-sm" data-pay="${p.id}" data-amount="${p.amountIdr}" data-order="${window.escapeHtml(p.orderId)}">
+                    Bayar Sekarang
+                  </button>
+                ` : `
+                  <button type="button" class="btn btn-secondary btn-sm" data-view="${p.id}">
+                    Lihat Invoice
+                  </button>
+                `}
+              </td>
+            </tr>
+          `;
+        }).join("");
+
+        // Pay now buttons
+        tbody.querySelectorAll("[data-pay]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const payId = btn.getAttribute("data-pay");
+            const amount = Number(btn.getAttribute("data-amount"));
+            const orderId = btn.getAttribute("data-order");
+
+            window.ui.openCheckoutModal({
+              title: `Pelunasan Tagihan — ${orderId}`,
+              amountIdr: amount,
+              invoiceNumber: orderId,
+              onSuccess: () => {
+                window.store.update("payments", payId, { status: "lunas" });
+                window.ui.showToast(`Pembayaran ${orderId} berhasil dikonfirmasi!`, "success");
+                renderTable();
+              }
+            });
+          });
+        });
+
+        // View invoice buttons
+        tbody.querySelectorAll("[data-view]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const payId = btn.getAttribute("data-view");
+            const p = window.store.getById("payments", payId);
+            if (!p) return;
+
+            window.ui.openDialog({
+              title: `Faktur Pembayaran — ${p.orderId}`,
+              bodyHTML: `
+                <div style="font-size:0.95rem;line-height:1.7;">
+                  <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--c-line);padding-bottom:12px;margin-bottom:12px;">
+                    <div>
+                      <strong>Momenin Studio</strong><br>
+                      <span style="font-size:0.85rem;color:var(--c-muted);">halo@momenin.id · Jakarta Selatan</span>
+                    </div>
+                    <div style="text-align:right;">
+                      <span class="badge ${p.status === 'lunas' ? 'badge-success' : 'badge-warning'}">${p.status.toUpperCase()}</span><br>
+                      <span style="font-size:0.85rem;color:var(--c-muted);">${window.formatDate(p.createdAt)}</span>
+                    </div>
+                  </div>
+                  <div style="margin-bottom:16px;">
+                    <span style="color:var(--c-muted);font-size:0.85rem;">Tagihan Kepada:</span><br>
+                    <strong>${window.escapeHtml(user.name)}</strong> (${window.escapeHtml(user.email)})
+                  </div>
+                  <div style="background:var(--c-bg);padding:14px;border-radius:var(--radius-sm);margin-bottom:16px;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                      <span>Total Tagihan:</span>
+                      <strong>${window.formatRupiah(p.amountIdr)}</strong>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:0.85rem;color:var(--c-muted);">
+                      <span>Status Pembayaran:</span>
+                      <span style="color:var(--c-success);font-weight:600;">Terverifikasi Otomatis</span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-secondary btn-sm" id="btn-dl-invoice" style="width:100%;">
+                    Unduh Dokumen Faktur (.pdf)
+                  </button>
+                </div>
+              `,
+              confirmLabel: "Tutup",
+              onConfirm: () => true
+            });
+
+            setTimeout(() => {
+              const dlBtn = document.getElementById("btn-dl-invoice");
+              if (dlBtn) {
+                dlBtn.addEventListener("click", () => {
+                  window.ui.downloadMockFile(`Invoice-${p.orderId}.pdf`, "application/pdf");
+                  window.ui.showToast("Mengunduh dokumen faktur resmi...", "info");
+                });
+              }
+            }, 100);
+          });
+        });
+      }
+
+      statusFilter.addEventListener("change", renderTable);
+      renderTable();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Cloud Storage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="dashboard.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Dashboard</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="proyek.html"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2-2h9a2 2 0 0 1 2 2z"/><path d="M1 13v4a2 2 0 0 0 2 2h4"/><path d="M12 11V7"/></svg><span>Proyek Saya</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="album.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Album</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link active" href="penyimpanan.html"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Penyimpanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="paket-saya.html"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Paket Saya</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="transaksi.html"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Transaksi</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pemesanan.html"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3.3 8.3L12 13l8.7-4.7"/><path d="M12 13V21"/></svg><span>Permintaan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="profil.html"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profil</span></a></li>
+      </ul>
+    </aside>
+
+    <div class="app-main">
+      <div class="section-header" style="text-align:left;margin-bottom:28px;">
+        <span class="section-eyebrow">Pengelola Berkas Cloud</span>
+        <h2 class="section-title">Penyimpanan Saya</h2>
+        <p class="section-desc">Kelola folder, berkas dokumentasi pribadi, dan kapasitas kuota penyimpanan cloud Anda.</p>
+      </div>
+
+      <!-- Storage Usage Card -->
+      <div class="card" style="margin-bottom:28px;box-shadow:var(--shadow-soft);">
+        <div class="card-body" style="padding:28px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <h3 class="card-title" style="font-size:1.25rem;margin:0;">Penggunaan Kapasitas Cloud</h3>
+            <span class="badge badge-success" id="quota-badge">Paket Aktif</span>
+          </div>
+          <div class="progress-bar" style="height:12px;background:#e7e1d6;border-radius:999px;overflow:hidden;margin-bottom:10px;">
+            <div class="progress-fill" id="progress-fill" style="width:0%;height:100%;background:var(--c-accent);border-radius:999px;transition:width 0.4s ease;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.9rem;color:var(--c-muted);">
+            <span id="used-text">0 GB / 0 GB terpakai</span>
+            <span id="quota-text">Memuat paket...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upgrade prompt if Free -->
+      <div id="free-upgrade" style="display:none;margin-bottom:28px;">
+        <div class="card" style="border:1px solid #e0c8a8;background:#fbf8f3;">
+          <div class="card-body" style="padding:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+            <div>
+              <h4 style="font-size:1.2rem;margin-bottom:4px;color:var(--c-ink);">Aktifkan Kuota Upload Cloud</h4>
+              <p style="color:var(--c-muted);font-size:0.92rem;margin:0;">Upgrade paket storage untuk mulai mengunggah foto dan video beresolusi tinggi ke arsip pribadi Anda.</p>
+            </div>
+            <a href="paket-saya.html" class="btn btn-primary btn-sm">Lihat Paket Upgrade &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action bar -->
+      <div class="filter-bar" style="margin-bottom:20px;">
+        <button type="button" class="btn btn-primary" id="new-folder-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2-2h9a2 2 0 0 1 2 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+          <span>Buat Folder Baru</span>
+        </button>
+        <input type="file" id="file-upload" multiple accept="image/jpeg,image/png,image/webp,video/mp4" style="display:none;">
+        <button type="button" class="btn btn-secondary" id="upload-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span>Unggah Berkas Baru</span>
+        </button>
+      </div>
+
+      <!-- File Manager Explorer -->
+      <div class="card" style="box-shadow:var(--shadow-soft);">
+        <div class="card-body" style="padding:24px;">
+          <h4 style="font-size:1.2rem;margin-bottom:16px;color:var(--c-ink);">Folder & Arsip Berkas</h4>
+          <div id="folder-tree" style="display:flex;flex-direction:column;gap:8px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/store.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.auth.requireLogin("user")) return;
+
+      const user = window.auth.getCurrentUser();
+      const userId = user.id;
+
+      const progressFill = document.getElementById("progress-fill");
+      const usedText = document.getElementById("used-text");
+      const quotaText = document.getElementById("quota-text");
+      const freeUpgrade = document.getElementById("free-upgrade");
+      const folderTree = document.getElementById("folder-tree");
+      const uploadBtn = document.getElementById("upload-btn");
+      const fileUploadInput = document.getElementById("file-upload");
+      const newFolderBtn = document.getElementById("new-folder-btn");
+
+      let currentQuotaBytes = 0;
+      let currentUsedBytes = 0;
+
+      function formatSize(bytes) {
+        if (!bytes || bytes === 0) return "0 MB";
+        const mb = bytes / (1024 * 1024);
+        if (mb >= 1024) {
+          return (mb / 1024).toFixed(2) + " GB";
+        }
+        return mb.toFixed(1) + " MB";
+      }
+
+      function renderStorage() {
+        const subs = window.store.getAll("subscriptions").filter(s => s.userId === userId);
+        const storagePlans = window.store.getAll("storagePlans");
+        const activeSub = subs[0];
+        const plan = activeSub ? storagePlans.find(p => p.id === activeSub.planId) : storagePlans.find(p => p.id === "sp-001");
+
+        const files = window.store.getAll("files").filter(f => f.userId === userId);
+        const folders = window.store.getAll("folders").filter(f => f.userId === userId);
+
+        currentUsedBytes = files.reduce((sum, f) => sum + (f.sizeBytes || 0), 0);
+        currentQuotaBytes = plan ? (plan.quotaBytes || 0) : 0;
+
+        const usedGB = (currentUsedBytes / (1024*1024*1024)).toFixed(2);
+        const quotaGB = currentQuotaBytes > 0 ? (currentQuotaBytes / (1024*1024*1024)).toFixed(1) : "0";
+        const percent = currentQuotaBytes > 0 ? Math.min(100, (currentUsedBytes / currentQuotaBytes * 100)).toFixed(1) : 0;
+
+        progressFill.style.width = percent + "%";
+        usedText.textContent = `${usedGB} GB dari ${quotaGB} GB (${percent}%)`;
+        quotaText.textContent = `Tingkat: ${plan ? plan.name : 'Free'}`;
+
+        if (currentQuotaBytes === 0) {
+          freeUpgrade.style.display = "block";
+        } else {
+          freeUpgrade.style.display = "none";
+        }
+
+        // Render Tree
+        if (!folders.length && !files.length) {
+          folderTree.innerHTML = '<p style="color:var(--c-muted);text-align:center;padding:32px;">Belum ada folder atau file yang diunggah. Buat folder baru atau unggah file untuk memulai.</p>';
+          return;
+        }
+
+        let html = "";
+
+        // Root files and folders
+        folders.forEach(fol => {
+          const folderFiles = files.filter(f => f.folderId === fol.id);
+          html += `
+            <div style="border:1px solid var(--c-line);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:8px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--c-bg);">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--c-accent)" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2-2h9a2 2 0 0 1 2 2z"/></svg>
+                  <strong>${window.escapeHtml(fol.name)}</strong>
+                  <span style="font-size:0.8rem;color:var(--c-muted);">(${folderFiles.length} file)</span>
+                </div>
+                <button type="button" class="btn btn-ghost btn-sm" style="color:var(--c-danger);" data-del-folder="${fol.id}" title="Hapus Folder">Hapus</button>
+              </div>
+              <div style="padding:8px 16px;">
+                ${folderFiles.length ? folderFiles.map(f => renderFileRow(f)).join("") : '<div style="font-size:0.85rem;color:var(--c-muted);padding:8px 0;">Folder kosong</div>'}
+              </div>
+            </div>
+          `;
+        });
+
+        // Files without folder
+        const rootFiles = files.filter(f => !f.folderId);
+        if (rootFiles.length) {
+          html += `
+            <div style="border:1px solid var(--c-line);border-radius:var(--radius-sm);padding:8px 16px;margin-top:8px;">
+              <div style="font-size:0.85rem;font-weight:600;color:var(--c-muted);margin-bottom:6px;">Berkas Utama (Root)</div>
+              ${rootFiles.map(f => renderFileRow(f)).join("")}
+            </div>
+          `;
+        }
+
+        folderTree.innerHTML = html;
+
+        // Attach action handlers
+        folderTree.querySelectorAll("[data-del-folder]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const folId = btn.getAttribute("data-del-folder");
+            window.ui.openDialog({
+              title: "Hapus Folder",
+              bodyHTML: "<p>Apakah Anda yakin ingin menghapus folder ini beserta berkas di dalamnya?</p>",
+              confirmLabel: "Hapus Folder",
+              isDanger: true,
+              onConfirm: () => {
+                window.store.remove("folders", folId);
+                // Also remove child files
+                files.filter(f => f.folderId === folId).forEach(f => window.store.remove("files", f.id));
+                window.ui.showToast("Folder berhasil dihapus.", "success");
+                renderStorage();
+                return true;
+              }
+            });
+          });
+        });
+
+        folderTree.querySelectorAll("[data-del-file]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const fileId = btn.getAttribute("data-del-file");
+            window.ui.openDialog({
+              title: "Hapus Berkas",
+              bodyHTML: "<p>Apakah Anda yakin ingin menghapus berkas ini dari penyimpanan cloud?</p>",
+              confirmLabel: "Hapus Berkas",
+              isDanger: true,
+              onConfirm: () => {
+                window.store.remove("files", fileId);
+                window.ui.showToast("Berkas berhasil dihapus.", "success");
+                renderStorage();
+                return true;
+              }
+            });
+          });
+        });
+
+        folderTree.querySelectorAll("[data-dl-file]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const name = btn.getAttribute("data-dl-file");
+            const type = btn.getAttribute("data-dl-type") || "image/jpeg";
+            window.ui.downloadMockFile(name, type);
+            window.ui.showToast(`Mengunduh berkas ${name}...`, "info");
+          });
+        });
+      }
+
+      function renderFileRow(f) {
+        return `
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2ede5;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+              <span style="font-weight:500;">${window.escapeHtml(f.fileName)}</span>
+              <span style="font-size:0.82rem;color:var(--c-muted);">${formatSize(f.sizeBytes)}</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button type="button" class="btn btn-secondary btn-sm" data-dl-file="${window.escapeHtml(f.fileName)}" data-dl-type="${window.escapeHtml(f.type)}">Unduh</button>
+              <button type="button" class="btn btn-ghost btn-sm" style="color:var(--c-danger);" data-del-file="${f.id}">Hapus</button>
+            </div>
+          </div>
+        `;
+      }
+
+      // New Folder Click
+      newFolderBtn.addEventListener("click", () => {
+        window.ui.openDialog({
+          title: "Buat Folder Baru",
+          bodyHTML: `
+            <div class="form-group">
+              <label class="form-label" for="new-folder-name">Nama Folder</label>
+              <input type="text" class="form-input" id="new-folder-name" placeholder="Misal: Foto Pernikahan Bali" required>
+            </div>
+          `,
+          confirmLabel: "Buat Folder",
+          onConfirm: () => {
+            const input = document.getElementById("new-folder-name");
+            const name = input ? input.value.trim() : "";
+            if (!name) {
+              window.ui.showToast("Nama folder tidak boleh kosong.", "warning");
+              return false;
+            }
+            window.store.create("folders", {
+              userId: userId,
+              parentId: null,
+              name: name
+            });
+            window.ui.showToast(`Folder "${name}" berhasil dibuat.`, "success");
+            renderStorage();
+            return true;
+          }
+        });
+      });
+
+      // Upload Click
+      uploadBtn.addEventListener("click", () => {
+        if (currentQuotaBytes === 0) {
+          window.ui.showToast("Paket Free tidak memiliki kuota upload. Silakan upgrade paket terlebih dahulu.", "warning");
+          return;
+        }
+        fileUploadInput.click();
+      });
+
+      fileUploadInput.addEventListener("change", (e) => {
+        const fileList = Array.from(e.target.files);
+        if (!fileList.length) return;
+
+        let totalAddSize = 0;
+        for (const file of fileList) {
+          if (file.size > 50 * 1024 * 1024) {
+            window.ui.showToast(`Berkas ${file.name} melebihi batas 50 MB.`, "error");
+            return;
+          }
+          totalAddSize += file.size;
+        }
+
+        if (currentUsedBytes + totalAddSize > currentQuotaBytes) {
+          window.ui.showToast("Kapasitas kuota penyimpanan Anda tidak mencukupi.", "error");
+          return;
+        }
+
+        fileList.forEach(file => {
+          window.store.create("files", {
+            userId: userId,
+            folderId: null,
+            fileName: file.name,
+            type: file.type || "image/jpeg",
+            sizeBytes: file.size,
+            createdAt: new Date().toISOString().split("T")[0]
+          });
+        });
+
+        window.ui.showToast(`${fileList.length} berkas berhasil diunggah ke cloud storage!`, "success");
+        e.target.value = "";
+        renderStorage();
+      });
+
+      renderStorage();
+    });
+  </script>
+</body>
+</html>

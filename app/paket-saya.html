@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Paket Saya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="dashboard.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Dashboard</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="proyek.html"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2-2h9a2 2 0 0 1 2 2z"/><path d="M1 13v4a2 2 0 0 0 2 2h4"/><path d="M12 11V7"/></svg><span>Proyek Saya</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="album.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Album</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="penyimpanan.html"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Penyimpanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link active" href="paket-saya.html"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Paket Saya</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="transaksi.html"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Transaksi</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pemesanan.html"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3.3 8.3L12 13l8.7-4.7"/><path d="M12 13V21"/></svg><span>Pemesanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="profil.html"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profil</span></a></li>
+      </ul>
+    </aside>
+
+    <div class="app-main">
+      <div class="section-header" style="text-align:left;margin-bottom:28px;">
+        <span class="section-eyebrow">Langganan & Layanan</span>
+        <h2 class="section-title">Status Paket Saya</h2>
+        <p class="section-desc">Kelola tingkatan penyimpanan cloud dan paket dokumentasi Anda yang sedang aktif.</p>
+      </div>
+
+      <!-- Kartu Paket Storage Aktif -->
+      <div class="card" style="box-shadow:var(--shadow-soft);margin-bottom:40px;" id="active-storage-card">
+        <div class="card-body" style="padding:32px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px;">
+            <div>
+              <span class="badge badge-success" style="margin-bottom:8px;">Paket Cloud Aktif</span>
+              <h3 style="font-size:1.6rem;color:var(--c-ink);margin-bottom:4px;" id="active-plan-name">Memuat...</h3>
+              <p style="color:var(--c-muted);margin:0;" id="active-plan-desc">Memuat rincian kuota...</p>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:1.8rem;font-weight:700;color:var(--c-accent);" id="active-plan-price">Rp 0</div>
+              <span style="font-size:0.85rem;color:var(--c-muted);">per bulan</span>
+            </div>
+          </div>
+
+          <div style="padding-top:16px;border-top:1px solid var(--c-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div style="font-size:0.92rem;color:var(--c-ink);">
+              Status: <strong style="color:var(--c-success);">Aktif Berlangganan</strong>
+            </div>
+            <a href="penyimpanan.html" class="btn btn-secondary btn-sm">Buka File Manager &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upgrade Pilihan Paket Storage -->
+      <div style="margin-bottom:20px;">
+        <h3 style="font-size:1.4rem;color:var(--c-ink);margin-bottom:6px;">Pilihan Upgrade Cloud Storage</h3>
+        <p style="color:var(--c-muted);font-size:0.95rem;">Tingkatkan kuota penyimpanan arsip foto resolusi penuh Anda kapan pun.</p>
+      </div>
+
+      <div class="grid grid-3" id="storage-plans-grid" style="margin-bottom:48px;">
+        <!-- Filled by JS -->
+      </div>
+
+      <!-- Paket Dokumentasi Tersedia -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div>
+          <h3 style="font-size:1.4rem;color:var(--c-ink);margin-bottom:4px;">Paket Dokumentasi Acara</h3>
+          <p style="color:var(--c-muted);font-size:0.95rem;margin:0;">Ajukan dokumentasi profesional untuk momen spesial Anda berikutnya.</p>
+        </div>
+        <a href="pemesanan.html" class="btn btn-primary btn-sm">Pesan Dokumentasi &rarr;</a>
+      </div>
+
+      <div class="grid grid-3" id="doc-packages-grid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/store.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.auth.requireLogin("user")) return;
+
+      const user = window.auth.getCurrentUser();
+      const userId = user.id;
+
+      const planNameEl = document.getElementById("active-plan-name");
+      const planDescEl = document.getElementById("active-plan-desc");
+      const planPriceEl = document.getElementById("active-plan-price");
+      const storageGrid = document.getElementById("storage-plans-grid");
+      const docGrid = document.getElementById("doc-packages-grid");
+
+      function formatBytes(bytes) {
+        if (!bytes || bytes === 0) return "0 GB";
+        const gb = bytes / (1024 * 1024 * 1024);
+        return gb >= 1 ? `${gb} GB` : `${Math.round(bytes / (1024 * 1024))} MB`;
+      }
+
+      function loadData() {
+        const subs = window.store.getAll("subscriptions").filter(s => s.userId === userId);
+        const storagePlans = window.store.getAll("storagePlans");
+        const packages = window.store.getAll("packages");
+
+        const activeSub = subs[0];
+        const activePlan = activeSub ? storagePlans.find(p => p.id === activeSub.planId) : storagePlans.find(p => p.id === "sp-001");
+
+        const curPlan = activePlan || storagePlans[0];
+        planNameEl.textContent = `Paket Storage: ${curPlan.name}`;
+        planDescEl.textContent = curPlan.quotaBytes > 0 ? `Kapasitas Kuota: ${formatBytes(curPlan.quotaBytes)} ruang simpan cloud aman.` : `Paket dasar (belum memiliki kuota upload file pribadi).`;
+        planPriceEl.textContent = window.formatRupiah(curPlan.priceIdr);
+
+        // Render storage plans
+        storageGrid.innerHTML = storagePlans.map(plan => {
+          const isCurrent = curPlan.id === plan.id;
+          return `
+            <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;border:${isCurrent ? '2px solid var(--c-accent)' : '1px solid var(--c-line)'};">
+              <div class="card-body" style="padding:24px;">
+                ${isCurrent ? '<span class="badge badge-success mb-2" style="display:inline-block;">Sedang Digunakan</span>' : ''}
+                <h4 style="font-size:1.3rem;margin-bottom:8px;">${window.escapeHtml(plan.name)}</h4>
+                <div style="font-size:1.5rem;font-weight:700;color:var(--c-accent);margin-bottom:12px;">
+                  ${window.formatRupiah(plan.priceIdr)} <span style="font-size:0.85rem;font-weight:400;color:var(--c-muted);">/bulan</span>
+                </div>
+                <div style="font-size:0.92rem;color:var(--c-muted);margin-bottom:16px;">
+                  Kuota Penyimpanan: <strong>${formatBytes(plan.quotaBytes)}</strong>
+                </div>
+              </div>
+              <div style="padding:16px 24px;border-top:1px solid var(--c-line);background:var(--c-bg);">
+                ${isCurrent ? `
+                  <button type="button" class="btn btn-secondary btn-sm" style="width:100%;" disabled>Paket Anda Saat Ini</button>
+                ` : `
+                  <button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-upgrade-sp="${plan.id}" data-name="${window.escapeHtml(plan.name)}" data-price="${plan.priceIdr}">
+                    Pilih & Berlangganan
+                  </button>
+                `}
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        // Render documentation packages
+        docGrid.innerHTML = packages.map(pkg => `
+          <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+            <div class="card-body" style="padding:24px;">
+              <h4 style="font-size:1.3rem;margin-bottom:8px;">${window.escapeHtml(pkg.name)}</h4>
+              <div style="font-size:1.5rem;font-weight:700;color:var(--c-ink);margin-bottom:12px;">
+                ${window.formatRupiah(pkg.priceIdr)}
+              </div>
+              <ul style="list-style:none;padding:0;margin:0;font-size:0.88rem;color:var(--c-muted);display:flex;flex-direction:column;gap:8px;">
+                ${(pkg.features || []).map(f => `<li>✓ ${window.escapeHtml(f)}</li>`).join("")}
+              </ul>
+            </div>
+            <div style="padding:16px 24px;border-top:1px solid var(--c-line);background:var(--c-bg);">
+              <a href="pemesanan.html?package=${encodeURIComponent(pkg.name)}" class="btn btn-primary btn-sm" style="width:100%;text-align:center;">
+                Pesan Paket Ini
+              </a>
+            </div>
+          </div>
+        `).join("");
+
+        // Attach upgrade click handlers
+        storageGrid.querySelectorAll("[data-upgrade-sp]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const planId = btn.getAttribute("data-upgrade-sp");
+            const planName = btn.getAttribute("data-name");
+            const price = Number(btn.getAttribute("data-price"));
+            const invoiceNum = "SUB-" + Math.floor(100000 + Math.random() * 900000);
+
+            window.ui.openCheckoutModal({
+              title: `Langganan Cloud Storage — Paket ${planName}`,
+              amountIdr: price,
+              invoiceNumber: invoiceNum,
+              onSuccess: () => {
+                if (activeSub) {
+                  window.store.update("subscriptions", activeSub.id, { planId: planId, status: "aktif" });
+                } else {
+                  window.store.create("subscriptions", {
+                    userId: userId,
+                    planId: planId,
+                    status: "aktif",
+                    periodStart: new Date().toISOString().split("T")[0],
+                    periodEnd: new Date(Date.now() + 30*24*60*60*1000).toISOString().split("T")[0]
+                  });
+                }
+
+                // Add payment record
+                window.store.create("payments", {
+                  userId: userId,
+                  orderId: invoiceNum,
+                  amountIdr: price,
+                  status: "lunas",
+                  createdAt: new Date().toISOString().split("T")[0]
+                });
+
+                window.ui.showToast(`Selamat! Paket storage Anda telah berhasil di-upgrade ke ${planName}.`, "success");
+                loadData();
+              }
+            });
+          });
+        });
+      }
+
+      loadData();
+    });
+  </script>
+</body>
+</html>

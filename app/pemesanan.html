@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Pemesanan Layanan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="dashboard.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Dashboard</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="proyek.html"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2-2h9a2 2 0 0 1 2 2z"/><path d="M1 13v4a2 2 0 0 0 2 2h4"/><path d="M12 11V7"/></svg><span>Proyek Saya</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="album.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Album</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="penyimpanan.html"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Penyimpanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="paket-saya.html"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Paket Saya</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="transaksi.html"><svg viewBox="0 0 24 24"><path d="M21 12a2 2 0 0 0-2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8a2 2 0 0 0-2-2H3"/><path d="M12 6v12"/><path d="M12 6s0-2 1.5-2S15 6 12 6z"/><path d="M12 6s0-2-1.5-2S9 6 12 6z"/></svg><span>Transaksi</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link active" href="pemesanan.html"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3.3 8.3L12 13l8.7-4.7"/><path d="M12 13V21"/></svg><span>Pemesanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="profil.html"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profil</span></a></li>
+      </ul>
+    </aside>
+
+    <div class="app-main">
+      <div class="section-header" style="text-align:left;margin-bottom:28px;">
+        <span class="section-eyebrow">Reservasi Dokumentasi</span>
+        <h2 class="section-title">Pemesanan & Permintaan Layanan</h2>
+        <p class="section-desc">Pilih paket dokumentasi terbaik untuk mengabadikan momen spesial Anda secara profesional.</p>
+      </div>
+
+      <!-- Form Booking Baru -->
+      <div class="card" style="box-shadow:var(--shadow-soft);margin-bottom:40px;">
+        <div class="card-body" style="padding:32px;">
+          <h3 style="font-size:1.35rem;margin-bottom:20px;color:var(--c-ink);">Formulir Pengajuan Layanan Baru</h3>
+          
+          <form id="order-form" novalidate>
+            <div class="grid grid-2" style="gap:20px;margin-bottom:16px;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="req-event-type">Jenis Acara *</label>
+                <select class="form-select" id="req-event-type" required>
+                  <option value="Pernikahan">Pernikahan (Wedding)</option>
+                  <option value="Prewedding">Sesi Prewedding</option>
+                  <option value="Wisuda">Dokumentasi Wisuda</option>
+                  <option value="Keluarga">Acara Keluarga & Ulang Tahun</option>
+                  <option value="Korporat">Dokumentasi Korporat / Acara Bisnis</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="req-package">Pilihan Paket Dokumentasi *</label>
+                <select class="form-select" id="req-package" required></select>
+              </div>
+            </div>
+
+            <div class="grid grid-2" style="gap:20px;margin-bottom:16px;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="req-date">Tanggal Rencana Acara *</label>
+                <input type="date" class="form-input" id="req-date" required>
+              </div>
+
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="req-location">Lokasi / Kota Pelaksanaan *</label>
+                <input type="text" class="form-input" id="req-location" required placeholder="Contoh: Jakarta Selatan, Grand Ballroom Hotel">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="req-notes">Catatan Tambahan atau Permintaan Khusus</label>
+              <textarea class="form-textarea" id="req-notes" rows="3" placeholder="Tuliskan estimasi jam acara, susunan acara penting, atau konsep pemotretan yang diinginkan..."></textarea>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:var(--c-bg);border:1px solid var(--c-line);border-radius:var(--radius-sm);margin-bottom:24px;">
+              <div>
+                <div style="font-size:0.85rem;color:var(--c-muted);">Estimasi Biaya Paket:</div>
+                <div id="price-summary" style="font-size:1.4rem;font-weight:700;color:var(--c-accent);">Rp 0</div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg" id="btn-submit-order">
+                <span>Lanjut ke Pembayaran & Konfirmasi</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Riwayat Permintaan -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <h3 style="font-size:1.35rem;color:var(--c-ink);">Riwayat Permintaan Saya</h3>
+        <select id="status-filter" class="form-select" style="width:auto;min-width:180px;">
+          <option value="">Semua Status</option>
+          <option value="baru">Baru</option>
+          <option value="diproses">Diproses</option>
+          <option value="disetujui">Disetujui</option>
+          <option value="ditolak">Ditolak</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tanggal Pengajuan</th>
+              <th>Jenis Acara & Lokasi</th>
+              <th>Paket</th>
+              <th>Status</th>
+              <th>Proyek Terkait</th>
+            </tr>
+          </thead>
+          <tbody id="pemesanan-body">
+            <tr><td colspan="5" style="text-align:center;padding:24px;">Memuat data permintaan...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/store.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.auth.requireLogin("user")) return;
+
+      const user = window.auth.getCurrentUser();
+      const userId = user.id;
+
+      const packageSelect = document.getElementById("req-package");
+      const eventTypeSelect = document.getElementById("req-event-type");
+      const dateInput = document.getElementById("req-date");
+      const locInput = document.getElementById("req-location");
+      const notesInput = document.getElementById("req-notes");
+      const priceSummary = document.getElementById("price-summary");
+      const orderForm = document.getElementById("order-form");
+      const tbody = document.getElementById("pemesanan-body");
+      const statusFilter = document.getElementById("status-filter");
+
+      // Set default minimum date to today
+      const today = new Date().toISOString().split("T")[0];
+      dateInput.min = today;
+      dateInput.value = today;
+
+      const packages = window.store.getAll("packages");
+
+      // Check query param ?package=
+      const urlParams = new URLSearchParams(window.location.search);
+      const preselectedPkgName = urlParams.get("package");
+
+      function populatePackages() {
+        packageSelect.innerHTML = packages.map(p => `
+          <option value="${p.id}" data-price="${p.priceIdr}" ${p.name.toLowerCase() === (preselectedPkgName || "").toLowerCase() ? 'selected' : ''}>
+            ${window.escapeHtml(p.name)} — ${window.formatRupiah(p.priceIdr)}
+          </option>
+        `).join("");
+        updatePriceSummary();
+      }
+
+      function updatePriceSummary() {
+        const selected = packageSelect.selectedOptions[0];
+        if (selected) {
+          const price = Number(selected.getAttribute("data-price") || 0);
+          priceSummary.textContent = window.formatRupiah(price);
+        }
+      }
+
+      packageSelect.addEventListener("change", updatePriceSummary);
+      populatePackages();
+
+      function renderTable() {
+        const allRequests = window.store.getAll("requests").filter(r => r.userId === userId);
+        const allProjects = window.store.getAll("projects");
+        const filterVal = statusFilter.value;
+        const filtered = filterVal ? allRequests.filter(r => r.status === filterVal) : allRequests;
+
+        if (!filtered.length) {
+          tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--c-muted);padding:24px;">Belum ada riwayat permintaan layanan.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = filtered.map(r => {
+          const pkg = packages.find(p => p.id === r.packageId);
+          const matchedProj = allProjects.find(p => p.name.includes(r.eventType) || (p.memberIds && p.memberIds.includes(userId)));
+          
+          let badgeClass = "badge-warning";
+          if (r.status === "disetujui") badgeClass = "badge-success";
+          else if (r.status === "diproses") badgeClass = "badge-info";
+          else if (r.status === "ditolak") badgeClass = "badge-danger";
+
+          return `
+            <tr>
+              <td>${window.formatDate(r.createdAt)}</td>
+              <td>
+                <strong>${window.escapeHtml(r.eventType)}</strong><br>
+                <span style="font-size:0.85rem;color:var(--c-muted);">${window.escapeHtml(r.eventLocation || "-")} (${window.formatDate(r.eventDate)})</span>
+              </td>
+              <td>${window.escapeHtml(pkg ? pkg.name : "Standar")}</td>
+              <td><span class="badge ${badgeClass}">${window.escapeHtml(r.status)}</span></td>
+              <td>
+                ${matchedProj ? `<a href="proyek-detail.html?id=${matchedProj.id}" class="btn btn-secondary btn-sm">Buka Proyek</a>` : `<span style="font-size:0.85rem;color:var(--c-muted);">-</span>`}
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      statusFilter.addEventListener("change", renderTable);
+      renderTable();
+
+      // Submit new order with dynamic checkout
+      orderForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const eventType = eventTypeSelect.value;
+        const pkgId = packageSelect.value;
+        const eventDate = dateInput.value;
+        const locationStr = locInput.value.trim();
+        const notes = notesInput.value.trim();
+
+        if (!locationStr) {
+          window.ui.showToast("Silakan isi lokasi acara Anda.", "warning");
+          locInput.focus();
+          return;
+        }
+
+        const selectedPkg = packages.find(p => p.id === pkgId) || packages[0];
+        const invoiceNum = "INV-" + Math.floor(100000 + Math.random() * 900000);
+
+        // Open checkout modal
+        window.ui.openCheckoutModal({
+          title: `Pembayaran Dokumentasi — ${eventType} (${selectedPkg.name})`,
+          amountIdr: selectedPkg.priceIdr,
+          invoiceNumber: invoiceNum,
+          onSuccess: (paymentResult) => {
+            // 1. Create request record
+            const newReq = window.store.create("requests", {
+              userId: userId,
+              customerName: user.name,
+              email: user.email,
+              phone: user.phone || "0812-3456-7890",
+              eventType: eventType,
+              eventDate: eventDate,
+              eventLocation: locationStr,
+              packageId: selectedPkg.id,
+              notes: notes,
+              status: "disetujui",
+              createdAt: new Date().toISOString().split("T")[0]
+            });
+
+            // 2. Create payment record
+            window.store.create("payments", {
+              userId: userId,
+              orderId: invoiceNum,
+              amountIdr: selectedPkg.priceIdr,
+              status: "lunas",
+              method: paymentResult.method,
+              createdAt: new Date().toISOString().split("T")[0]
+            });
+
+            // 3. Create active project
+            const newProj = window.store.create("projects", {
+              name: `Dokumentasi ${eventType} ${user.name.split(" ")[0]}`,
+              eventType: eventType,
+              eventDate: eventDate,
+              location: locationStr,
+              status: "terjadwal",
+              memberIds: [userId],
+              createdAt: new Date().toISOString().split("T")[0]
+            });
+
+            // 4. Create initial album for this project
+            window.store.create("albums", {
+              projectId: newProj.id,
+              name: `Galeri ${eventType} ${user.name.split(" ")[0]}`,
+              description: `Dokumentasi resmi paket ${selectedPkg.name} di ${locationStr}.`,
+              coverMediaId: null
+            });
+
+            // 5. Add activity
+            window.store.create("activity", {
+              actorId: userId,
+              action: `melakukan pemesanan paket ${selectedPkg.name}`,
+              entityType: "project",
+              entityId: newProj.id,
+              createdAt: new Date().toISOString().split("T")[0]
+            });
+
+            window.ui.showToast(`Pemesanan berhasil! Proyek dan album baru Anda telah siap dipantau.`, "success");
+            locInput.value = "";
+            notesInput.value = "";
+            renderTable();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

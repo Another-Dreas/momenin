@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Pengaturan Sistem (Admin)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="index.html" data-sidebar="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Dashboard</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pelanggan.html" data-sidebar="pelanggan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Pelanggan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="proyek.html" data-sidebar="proyek.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2-2h9a2 2 0 0 1 2 2z"/></svg><span>Proyek</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="album.html" data-sidebar="album.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Album</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="media.html" data-sidebar="media.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg><span>Media</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="layanan.html" data-sidebar="layanan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><span>Layanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="paket.html" data-sidebar="paket.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span>Paket</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="langganan.html" data-sidebar="langganan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span>Langganan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pembayaran.html" data-sidebar="pembayaran.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Pembayaran</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pemesanan.html" data-sidebar="pemesanan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Pemesanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="aktivitas.html" data-sidebar="aktivitas.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Aktivitas</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link active" href="pengaturan.html" data-sidebar="pengaturan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-0.9A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v0.9a1.65 1.65 0 0 0 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V19a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-0.9a1.65 1.65 0 0 0-1.51-1z"/></svg><span>Pengaturan</span></a></li>
+      </ul>
+    </aside>
+
+    <div class="app-main">
+      <div class="section-header" style="text-align:left;margin-bottom:32px;">
+        <span class="section-eyebrow">Konfigurasi Sistem</span>
+        <h2 class="section-title">Pengaturan Sistem</h2>
+        <p class="section-desc">Identitas dasar serta kendali data dan pengaturan operasional Momenin.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <!-- Informasi Situs -->
+        <div class="card">
+          <div class="card-body">
+            <h3 style="font-size:1.3rem;margin-bottom:20px;">Informasi Situs & Studio</h3>
+            <div class="form-group">
+              <label class="form-label">Nama Brand / Website</label>
+              <input type="text" class="form-input" value="Momenin" readonly style="background:#f7f4ed;">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Posisi & Deskripsi Singkat</label>
+              <textarea class="form-textarea" rows="3" readonly style="background:#f7f4ed;">Momenin membantu pelanggan mengabadikan momen penting melalui layanan dokumentasi profesional dan mengakses kenangannya secara praktis melalui album digital.</textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kontak Resmi & Dukungan</label>
+              <input type="text" class="form-input" value="halo@momenin.id · +62 812-3456-7890" readonly style="background:#f7f4ed;">
+              <span class="form-hint">Email dan WhatsApp resmi studio layanan pelanggan.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kendali Data Sistem -->
+        <div class="card" style="border-color:#f0d7d5;">
+          <div class="card-body">
+            <h3 style="font-size:1.3rem;margin-bottom:12px;color:var(--c-danger);">Reset Data Sistem (Pengaturan Awal)</h3>
+            <p class="card-text">
+              Mengembalikan seluruh data proyek, album, media, langganan, dan transaksi ke kondisi awal bawaan sistem.
+              Gunakan fungsi ini jika Anda ingin mengembalikan kondisi data sistem ke titik mula.
+            </p>
+
+            <div style="background:#fff6f5;border:1px solid #f9d2ce;border-radius:var(--radius-sm);padding:16px;margin:20px 0;">
+              <strong style="color:var(--c-danger);display:block;margin-bottom:6px;font-size:0.9rem;">Perhatian:</strong>
+              <p style="font-size:0.85rem;color:var(--c-muted);margin:0;">Data buatan pengguna baru atau pemesanan yang telah Anda buat akan dikembalikan dan diisi ulang dengan data bawaan.</p>
+            </div>
+
+            <button type="button" class="btn btn-danger" id="btn-reset-demo" style="width:100%;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              <span>Reset Data Sistem ke Kondisi Awal</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/store.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.auth.requireLogin("admin")) return;
+
+      const btnReset = document.getElementById("btn-reset-demo");
+
+      btnReset.addEventListener("click", () => {
+        window.ui.openDialog({
+          title: "Konfirmasi Reset Sistem",
+          bodyHTML: "<p>Apakah Anda yakin ingin mengatur ulang data sistem ke kondisi awal? Semua perubahan data akan dikembalikan.</p>",
+          confirmLabel: "Reset Sekarang",
+          isDanger: true,
+          onConfirm: () => {
+            window.store.resetDemo();
+            window.ui.showToast("Data sistem berhasil direset ke kondisi awal.", "success");
+            setTimeout(() => {
+              window.location.reload();
+            }, 800);
+            return true;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

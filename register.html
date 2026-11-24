@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Pendaftaran Akun Pelanggan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="padding:48px 0 88px;">
+    <div class="container" style="max-width:520px;">
+      <div class="section-header" style="margin-bottom:28px;">
+        <span class="section-eyebrow">Bergabung Bersama Kami</span>
+        <h1 class="section-title" style="font-size:2.4rem;">Daftar Akun Baru</h1>
+        <p class="section-desc">Buat akun untuk memesan sesi dokumentasi, mengakses album digital privat, dan menyimpan arsip momen penting Anda.</p>
+      </div>
+
+      <div class="card" style="box-shadow:var(--shadow-hover);">
+        <div class="card-body" style="padding:32px;">
+          <form id="reg-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="reg-name">Nama Lengkap *</label>
+              <input type="text" class="form-input" id="reg-name" required placeholder="Contoh: Maya Salsabila" autocomplete="name">
+              <span class="form-error" id="reg-name-error" style="display:none;"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-email">Alamat Email *</label>
+              <input type="email" class="form-input" id="reg-email" required placeholder="maya@email.com" autocomplete="email">
+              <span class="form-error" id="reg-email-error" style="display:none;"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-phone">Nomor Telepon / WhatsApp *</label>
+              <input type="tel" class="form-input" id="reg-phone" required placeholder="0812-xxxx-xxxx" autocomplete="tel">
+              <span class="form-error" id="reg-phone-error" style="display:none;"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-pw">Kata Sandi *</label>
+              <input type="password" class="form-input" id="reg-pw" required placeholder="Minimal 8 karakter" autocomplete="new-password">
+              <span class="form-error" id="reg-pw-error" style="display:none;"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-confirm">Konfirmasi Kata Sandi *</label>
+              <input type="password" class="form-input" id="reg-confirm" required placeholder="Ulangi kata sandi" autocomplete="new-password">
+              <span class="form-error" id="reg-confirm-error" style="display:none;"></span>
+            </div>
+
+            <div class="form-group" style="margin-top:20px;">
+              <label class="form-check">
+                <input type="checkbox" class="form-check-input" id="reg-terms" required checked>
+                <span style="font-size:0.9rem;color:var(--c-ink);">
+                  Saya menyetujui <a href="syarat-ketentuan.html" target="_blank">Syarat & Ketentuan Layanan</a> dan <a href="kebijakan-privasi.html" target="_blank">Kebijakan Privasi</a> Momenin.
+                </span>
+              </label>
+              <span class="form-error" id="reg-terms-error" style="display:none;"></span>
+            </div>
+
+            <div id="reg-global-error" class="form-error" style="display:none;margin-bottom:16px;"></div>
+
+            <button type="submit" class="btn btn-primary" id="btn-submit-reg" style="width:100%;padding:13px;margin-top:8px;">
+              <span>Daftar Akun Sekarang</span>
+            </button>
+          </form>
+
+          <div style="text-align:center;margin-top:24px;font-size:0.92rem;color:var(--c-muted);">
+            Sudah memiliki akun? <a href="login.html" style="font-weight:600;">Masuk di sini</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.auth.redirectIfLoggedIn()) return;
+
+      const form = document.getElementById("reg-form");
+      const nameInput = document.getElementById("reg-name");
+      const emailInput = document.getElementById("reg-email");
+      const phoneInput = document.getElementById("reg-phone");
+      const pwInput = document.getElementById("reg-pw");
+      const confirmInput = document.getElementById("reg-confirm");
+      const termsInput = document.getElementById("reg-terms");
+
+      const nameErr = document.getElementById("reg-name-error");
+      const emailErr = document.getElementById("reg-email-error");
+      const phoneErr = document.getElementById("reg-phone-error");
+      const pwErr = document.getElementById("reg-pw-error");
+      const confirmErr = document.getElementById("reg-confirm-error");
+      const termsErr = document.getElementById("reg-terms-error");
+      const globalErr = document.getElementById("reg-global-error");
+
+      function clearErrors() {
+        [nameErr, emailErr, phoneErr, pwErr, confirmErr, termsErr, globalErr].forEach(el => {
+          el.style.display = "none";
+          el.textContent = "";
+        });
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim().toLowerCase();
+        const phone = phoneInput.value.trim();
+        const pw = pwInput.value;
+        const confirm = confirmInput.value;
+
+        let hasError = false;
+
+        if (!name) {
+          nameErr.textContent = "Nama lengkap wajib diisi.";
+          nameErr.style.display = "block";
+          hasError = true;
+        }
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          emailErr.textContent = "Format alamat email tidak valid.";
+          emailErr.style.display = "block";
+          hasError = true;
+        } else {
+          const existing = window.store.getAll("users").find(u => (u.email || "").toLowerCase() === email);
+          if (existing) {
+            emailErr.textContent = "Email sudah terdaftar. Silakan gunakan email lain atau masuk.";
+            emailErr.style.display = "block";
+            hasError = true;
+          }
+        }
+
+        if (!phone) {
+          phoneErr.textContent = "Nomor telepon wajib diisi.";
+          phoneErr.style.display = "block";
+          hasError = true;
+        }
+
+        if (pw.length < 8) {
+          pwErr.textContent = "Kata sandi minimal 8 karakter.";
+          pwErr.style.display = "block";
+          hasError = true;
+        }
+
+        if (confirm !== pw) {
+          confirmErr.textContent = "Konfirmasi kata sandi tidak cocok.";
+          confirmErr.style.display = "block";
+          hasError = true;
+        }
+
+        if (!termsInput.checked) {
+          termsErr.textContent = "Harap setujui syarat & ketentuan layanan.";
+          termsErr.style.display = "block";
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        // Persist user with credentials
+        const newUser = window.store.create("users", {
+          name,
+          email,
+          phone,
+          password: pw,
+          role: "user",
+          status: "active",
+          createdAt: new Date().toISOString().split("T")[0]
+        });
+
+        // Set session
+        window.auth.setSession(newUser.id, "user");
+        window.ui.showToast("Pendaftaran berhasil! Mengarahkan ke dashboard...", "success");
+
+        setTimeout(() => {
+          window.location.href = "app/dashboard.html";
+        }, 500);
+      });
+    });
+  </script>
+</body>
+</html>

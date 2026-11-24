@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Masuk ke Akun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="padding:48px 0 88px;">
+    <div class="container" style="max-width:520px;">
+      <div class="section-header" style="margin-bottom:32px;">
+        <span class="section-eyebrow">Akses Akun</span>
+        <h1 class="section-title" style="font-size:2.4rem;">Masuk ke Momenin</h1>
+        <p class="section-desc">Akses album digital, kelola jadwal dokumentasi, dan pantau arsip kenangan Anda.</p>
+      </div>
+
+      <!-- Quick test credentials box (styled discreetly) -->
+      <div style="background:#f4efe6;border:1px solid #ded5c5;border-radius:var(--radius-card);padding:18px;margin-bottom:28px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+          <strong style="font-size:0.9rem;color:var(--c-ink);">Akses Cepat Pengguna:</strong>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-fill-user" style="justify-content:space-between;text-align:left;background:#fff;">
+            <span><strong>Pelanggan:</strong> pelanggan@momenin.id</span>
+            <span style="color:var(--c-accent);font-size:0.8rem;">Gunakan &rarr;</span>
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-fill-admin" style="justify-content:space-between;text-align:left;background:#fff;">
+            <span><strong>Administrator:</strong> admin@momenin.id</span>
+            <span style="color:var(--c-accent);font-size:0.8rem;">Gunakan &rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Login Form Card -->
+      <div class="card" style="box-shadow:var(--shadow-hover);">
+        <div class="card-body" style="padding:32px;">
+          <form id="login-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="login-email">Alamat Email *</label>
+              <input type="email" class="form-input" id="login-email" required placeholder="nama@email.com" autocomplete="email">
+              <span class="form-error" id="login-email-error" style="display:none;"></span>
+            </div>
+
+            <div class="form-group">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
+                <label class="form-label" for="login-pw" style="margin-bottom:0;">Kata Sandi *</label>
+                <a href="lupa-password.html" style="font-size:0.85rem;color:var(--c-muted);">Lupa sandi?</a>
+              </div>
+              <input type="password" class="form-input" id="login-pw" required placeholder="Masukkan kata sandi Anda" autocomplete="current-password">
+              <span class="form-error" id="login-pw-error" style="display:none;"></span>
+            </div>
+
+            <div id="login-global-error" class="form-error" style="display:none;margin-bottom:16px;padding:12px;background:#fae8e6;border-radius:var(--radius-sm);border:1px solid #f2c1be;"></div>
+
+            <button type="submit" class="btn btn-primary" id="btn-submit-login" style="width:100%;padding:13px;">
+              <span>Masuk Sekarang</span>
+            </button>
+          </form>
+
+          <div style="text-align:center;margin-top:24px;font-size:0.92rem;color:var(--c-muted);">
+            Belum memiliki akun? <a href="register.html" style="font-weight:600;">Daftar Akun Baru</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.auth.redirectIfLoggedIn()) return;
+
+      const form = document.getElementById("login-form");
+      const emailInput = document.getElementById("login-email");
+      const pwInput = document.getElementById("login-pw");
+      const emailErr = document.getElementById("login-email-error");
+      const pwErr = document.getElementById("login-pw-error");
+      const globalErr = document.getElementById("login-global-error");
+      const submitBtn = document.getElementById("btn-submit-login");
+
+      document.getElementById("btn-fill-user").addEventListener("click", () => {
+        emailInput.value = "pelanggan@momenin.id";
+        pwInput.value = "demo1234";
+        clearErrors();
+      });
+
+      document.getElementById("btn-fill-admin").addEventListener("click", () => {
+        emailInput.value = "admin@momenin.id";
+        pwInput.value = "admin1234";
+        clearErrors();
+      });
+
+      function clearErrors() {
+        emailErr.style.display = "none";
+        emailErr.textContent = "";
+        pwErr.style.display = "none";
+        pwErr.textContent = "";
+        globalErr.style.display = "none";
+        globalErr.textContent = "";
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        const email = emailInput.value.trim();
+        const password = pwInput.value;
+
+        let hasError = false;
+        if (!email) {
+          emailErr.textContent = "Alamat email wajib diisi.";
+          emailErr.style.display = "block";
+          hasError = true;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          emailErr.textContent = "Format alamat email tidak valid.";
+          emailErr.style.display = "block";
+          hasError = true;
+        }
+
+        if (!password) {
+          pwErr.textContent = "Kata sandi wajib diisi.";
+          pwErr.style.display = "block";
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Memverifikasi...</span>';
+
+        setTimeout(async () => {
+          try {
+            const user = await window.auth.login(email, password);
+            window.ui.showToast(`Selamat datang kembali, ${user.name}!`, "success");
+
+            setTimeout(() => {
+              window.location.href = window.auth.getNextUrl();
+            }, 300);
+          } catch (err) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Masuk Sekarang</span>';
+            pwInput.value = "";
+            globalErr.textContent = err.message || "Email atau kata sandi tidak cocok.";
+            globalErr.style.display = "block";
+          }
+        }, 500);
+      });
+    });
+  </script>
+</body>
+</html>

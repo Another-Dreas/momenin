@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Detail Proyek (Admin)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="index.html" data-sidebar="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Dashboard</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pelanggan.html" data-sidebar="pelanggan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Pelanggan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link active" href="proyek.html" data-sidebar="proyek.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2-2h9a2 2 0 0 1 2 2z"/></svg><span>Proyek</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="album.html" data-sidebar="album.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Album</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="media.html" data-sidebar="media.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg><span>Media</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="layanan.html" data-sidebar="layanan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><span>Layanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="paket.html" data-sidebar="paket.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span>Paket</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="langganan.html" data-sidebar="langganan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span>Langganan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pembayaran.html" data-sidebar="pembayaran.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Pembayaran</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pemesanan.html" data-sidebar="pemesanan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Pemesanan</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="aktivitas.html" data-sidebar="aktivitas.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Aktivitas</span></a></li>
+        <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="pengaturan.html" data-sidebar="pengaturan.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-0.9A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h0.9A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v0.9a1.65 1.65 0 0 0 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V19a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-0.9a1.65 1.65 0 0 0-1.51-1z"/></svg><span>Pengaturan</span></a></li>
+      </ul>
+    </aside>
+
+    <div class="app-main">
+      <div style="margin-bottom:24px;">
+        <a href="proyek.html" class="btn btn-ghost btn-sm" style="margin-bottom:12px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Kembali ke Daftar Proyek
+        </a>
+        <h2 class="section-title" id="proj-title">Detail Proyek</h2>
+        <p class="section-desc" id="proj-sub">Kelola metadata, status pengerjaan, dan album terhubung.</p>
+      </div>
+
+      <div class="grid grid-2" style="margin-bottom:40px;">
+        <!-- Card Edit Proyek -->
+        <div class="card">
+          <div class="card-body">
+            <h3 style="font-size:1.3rem;margin-bottom:20px;">Informasi Proyek</h3>
+            <form id="form-edit-project">
+              <div class="form-group">
+                <label class="form-label">Nama Proyek</label>
+                <input type="text" class="form-input" id="edit-name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Jenis Acara</label>
+                <select class="form-select" id="edit-type">
+                  <option value="Pernikahan">Pernikahan</option>
+                  <option value="Prewedding">Prewedding</option>
+                  <option value="Wisuda">Wisuda</option>
+                  <option value="Keluarga">Keluarga</option>
+                  <option value="Korporat">Korporat</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tanggal Pelaksanaan</label>
+                <input type="date" class="form-input" id="edit-date" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Lokasi</label>
+                <input type="text" class="form-input" id="edit-location" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Status Proyek</label>
+                <select class="form-select" id="edit-status">
+                  <option value="terjadwal">Terjadwal</option>
+                  <option value="berjalan">Berjalan</option>
+                  <option value="selesai">Selesai</option>
+                  <option value="dibatalkan">Dibatalkan</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary" style="margin-top:10px;">Simpan Perubahan</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Card Anggota Pelanggan -->
+        <div class="card">
+          <div class="card-body">
+            <h3 style="font-size:1.3rem;margin-bottom:16px;">Pelanggan Terhubung</h3>
+            <p class="card-text">Pelanggan yang dapat mengakses proyek ini di area akun mereka.</p>
+            <div id="members-list" style="margin-bottom:24px;"></div>
+
+            <hr style="border:none;border-top:1px solid var(--c-line);margin:20px 0;">
+            <div class="form-group">
+              <label class="form-label">Tambahkan Pelanggan Lain</label>
+              <div style="display:flex;gap:10px;">
+                <select class="form-select" id="select-add-member"></select>
+                <button type="button" class="btn btn-secondary btn-sm" id="btn-add-member">Tambah</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Album Terkait -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <h3 style="font-size:1.4rem;">Album Dokumentasi Proyek Ini</h3>
+        <button class="btn btn-secondary btn-sm" id="btn-create-album">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Tambah Album
+        </button>
+      </div>
+
+      <div class="grid grid-3" id="albums-grid"></div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/store.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.auth.requireLogin("admin")) return;
+
+      const params = new URLSearchParams(window.location.search);
+      const projectId = params.get("id");
+      if (!projectId) {
+        window.location.href = "proyek.html";
+        return;
+      }
+
+      let project = window.store.getById("projects", projectId);
+      if (!project) {
+        window.ui.showToast("Proyek tidak ditemukan.", "error");
+        setTimeout(() => window.location.href = "proyek.html", 1000);
+        return;
+      }
+
+      const formEdit = document.getElementById("form-edit-project");
+      const nameInput = document.getElementById("edit-name");
+      const typeInput = document.getElementById("edit-type");
+      const dateInput = document.getElementById("edit-date");
+      const locInput = document.getElementById("edit-location");
+      const statusInput = document.getElementById("edit-status");
+      const membersList = document.getElementById("members-list");
+      const selectAddMember = document.getElementById("select-add-member");
+      const btnAddMember = document.getElementById("btn-add-member");
+      const albumsGrid = document.getElementById("albums-grid");
+      const btnCreateAlbum = document.getElementById("btn-create-album");
+
+      function syncUI() {
+        project = window.store.getById("projects", projectId);
+        document.getElementById("proj-title").textContent = project.name;
+        nameInput.value = project.name;
+        typeInput.value = project.eventType;
+        dateInput.value = project.eventDate;
+        locInput.value = project.location;
+        statusInput.value = project.status;
+
+        // Render Members
+        const allUsers = window.store.getAll("users");
+        membersList.innerHTML = "";
+        const memberIds = project.memberIds || [];
+        if (!memberIds.length) {
+          membersList.innerHTML = '<p style="color:var(--c-muted);font-size:0.9rem;">Belum ada pelanggan terhubung.</p>';
+        } else {
+          membersList.innerHTML = memberIds.map(id => {
+            const u = allUsers.find(x => x.id === id);
+            return `
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--c-bg);border-radius:var(--radius-sm);margin-bottom:8px;">
+                <div>
+                  <strong>${window.escapeHtml(u ? u.name : id)}</strong>
+                  <div style="font-size:0.8rem;color:var(--c-muted);">${window.escapeHtml(u ? u.email : '')}</div>
+                </div>
+                <button type="button" class="btn btn-ghost btn-sm" style="color:var(--c-danger);" data-remove-member="${id}">Hapus</button>
+              </div>
+            `;
+          }).join("");
+
+          membersList.querySelectorAll("[data-remove-member]").forEach(btn => {
+            btn.addEventListener("click", () => {
+              const remId = btn.getAttribute("data-remove-member");
+              const updated = (project.memberIds || []).filter(x => x !== remId);
+              window.store.update("projects", projectId, { memberIds: updated });
+              window.ui.showToast("Pelanggan dilepas dari proyek.", "info");
+              syncUI();
+            });
+          });
+        }
+
+        // Available users dropdown
+        const available = allUsers.filter(u => u.role === "user" && !memberIds.includes(u.id));
+        selectAddMember.innerHTML = '<option value="">-- Pilih Pelanggan --</option>' +
+          available.map(u => `<option value="${u.id}">${window.escapeHtml(u.name)} (${window.escapeHtml(u.email)})</option>`).join("");
+
+        // Render Albums
+        const albums = window.store.getAll("albums").filter(a => a.projectId === projectId);
+        if (!albums.length) {
+          albumsGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:32px;background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--radius-card);color:var(--c-muted);">Belum ada album pada proyek ini.</p>';
+        } else {
+          albumsGrid.innerHTML = albums.map(a => `
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">${window.escapeHtml(a.name)}</h4>
+                <p class="card-text">${window.escapeHtml(a.description || "-")}</p>
+                <div style="margin-top:auto;display:flex;gap:8px;">
+                  <a href="album.html" class="btn btn-secondary btn-sm" style="width:100%;">Kelola di Album</a>
+                </div>
+              </div>
+            </div>
+          `).join("");
+        }
+      }
+
+      formEdit.addEventListener("submit", (e) => {
+        e.preventDefault();
+        window.store.update("projects", projectId, {
+          name: nameInput.value.trim(),
+          eventType: typeInput.value,
+          eventDate: dateInput.value,
+          location: locInput.value.trim(),
+          status: statusInput.value
+        });
+        window.ui.showToast("Perubahan proyek berhasil disimpan.", "success");
+        syncUI();
+      });
+
+      btnAddMember.addEventListener("click", () => {
+        const selected = selectAddMember.value;
+        if (!selected) return;
+        const current = project.memberIds || [];
+        if (!current.includes(selected)) {
+          window.store.update("projects", projectId, { memberIds: [...current, selected] });
+          window.ui.showToast("Pelanggan berhasil ditambahkan ke proyek.", "success");
+          syncUI();
+        }
+      });
+
+      btnCreateAlbum.addEventListener("click", () => {
+        const body = `
+          <div class="form-group">
+            <label class="form-label">Nama Album *</label>
+            <input type="text" class="form-input" id="alb-name" placeholder="Contoh: Resepsi & Keluarga" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Deskripsi Album</label>
+            <textarea class="form-textarea" id="alb-desc" rows="3" placeholder="Keterangan singkat isi album"></textarea>
+          </div>
+        `;
+        window.ui.openDialog({
+          title: "Tambah Album ke Proyek",
+          bodyHTML: body,
+          confirmLabel: "Simpan Album",
+          onConfirm: () => {
+            const aName = document.getElementById("alb-name").value.trim();
+            const aDesc = document.getElementById("alb-desc").value.trim();
+            if (!aName) {
+              window.ui.showToast("Nama album wajib diisi.", "error");
+              return false;
+            }
+            window.store.create("albums", {
+              projectId,
+              name: aName,
+              description: aDesc
+            });
+            window.ui.showToast("Album baru berhasil ditambahkan.", "success");
+            syncUI();
+            return true;
+          }
+        });
+      });
+
+      syncUI();
+    });
+  </script>
+</body>
+</html>

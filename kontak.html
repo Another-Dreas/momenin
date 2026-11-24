@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Hubungi Kami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="padding:48px 0 88px;">
+    <div class="container" style="max-width:760px;">
+      <div class="section-header" style="margin-bottom:36px;">
+        <span class="section-eyebrow">Komunikasi & Konsultasi</span>
+        <h1 class="section-title" style="font-size:2.4rem;">Hubungi Tim Momenin</h1>
+        <p class="section-desc">Punya pertanyaan seputar dokumentasi atau ingin berdiskusi mengenai rencana acara spesial Anda? Silakan tinggalkan pesan melalui formulir di bawah.</p>
+      </div>
+
+      <div class="card" style="box-shadow:var(--shadow-hover);margin-bottom:32px;">
+        <div class="card-body" style="padding:36px;">
+          <form id="kontak-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="kontak-name">Nama Lengkap *</label>
+              <input type="text" class="form-input" id="kontak-name" required placeholder="Nama lengkap Anda">
+              <span class="form-error" id="err-kontak-name" style="display:none;"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="kontak-email">Alamat Email *</label>
+              <input type="email" class="form-input" id="kontak-email" required placeholder="nama@email.com">
+              <span class="form-error" id="err-kontak-email" style="display:none;"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="kontak-pesan">Pesan Anda *</label>
+              <textarea class="form-textarea" id="kontak-pesan" rows="5" required placeholder="Tuliskan pertanyaan, tanggal perkiraan, atau rencana acara Anda di sini..."></textarea>
+              <span class="form-error" id="err-kontak-pesan" style="display:none;"></span>
+            </div>
+
+            <div id="kontak-feedback" style="display:none;padding:14px;background:#eaf3ec;border:1px solid #c9e2cf;border-radius:var(--radius-sm);font-size:0.92rem;color:var(--c-success);margin-bottom:20px;"></div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">
+              Kirim Pesan
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="grid grid-3" style="gap:16px;">
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-weight:600;margin-bottom:4px;color:var(--c-ink);">Email Resmi</div>
+          <div style="font-size:0.9rem;color:var(--c-accent);">halo@momenin.id</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-weight:600;margin-bottom:4px;color:var(--c-ink);">WhatsApp / Telepon</div>
+          <div style="font-size:0.9rem;color:var(--c-accent);">+62 812-3456-7890</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-weight:600;margin-bottom:4px;color:var(--c-ink);">Studio Utama</div>
+          <div style="font-size:0.9rem;color:var(--c-muted);">Jakarta Selatan, Indonesia</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("kontak-form");
+      const nameInput = document.getElementById("kontak-name");
+      const emailInput = document.getElementById("kontak-email");
+      const msgInput = document.getElementById("kontak-pesan");
+      const errName = document.getElementById("err-kontak-name");
+      const errEmail = document.getElementById("err-kontak-email");
+      const errMsg = document.getElementById("err-kontak-pesan");
+      const feedback = document.getElementById("kontak-feedback");
+
+      function clearErrors() {
+        [errName, errEmail, errMsg].forEach(el => {
+          el.style.display = "none";
+          el.textContent = "";
+        });
+        feedback.style.display = "none";
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const msg = msgInput.value.trim();
+
+        let hasError = false;
+        if (!name) {
+          errName.textContent = "Nama wajib diisi.";
+          errName.style.display = "block";
+          hasError = true;
+        }
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errEmail.textContent = "Format email tidak valid.";
+          errEmail.style.display = "block";
+          hasError = true;
+        }
+
+        if (!msg) {
+          errMsg.textContent = "Pesan wajib diisi.";
+          errMsg.style.display = "block";
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        feedback.textContent = "Terima kasih! Pesan Anda telah berhasil terkirim. Tim konsultan kami akan segera menghubungi Anda.";
+        feedback.style.display = "block";
+        window.ui.showToast("Pesan Anda berhasil dikirim ke tim Momenin.", "success");
+        form.reset();
+      });
+    });
+  </script>
+</body>
+</html>

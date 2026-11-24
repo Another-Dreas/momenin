@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenin — Portofolio Dokumentasi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <section class="hero" style="padding:60px 0 72px;">
+      <div class="container hero-inner" style="grid-template-columns:1fr;text-align:center;">
+        <div style="max-width:760px;margin:0 auto;">
+          <span class="hero-pill">Galeri Visual</span>
+          <h1 class="hero-title" style="margin-bottom:16px;">Portofolio Momen Pilihan</h1>
+          <p class="hero-desc" style="margin:0 auto;">Setiap foto adalah saksi cerita kebahagiaan. Jelajahi karya dan arsip dokumentasi visual terbaik dari Momenin.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Filter Tabs / Pills -->
+        <div class="filter-bar" style="justify-content:center;margin-bottom:40px;">
+          <div id="portfolio-filter-pills" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+        </div>
+
+        <div class="grid grid-3" id="portfolio-grid">
+          <!-- Populated from store -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="portfolio-lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau Foto">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close-btn" aria-label="Tutup pratinjau">&times;</button>
+      <img src="" alt="" class="lightbox-img" id="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("portfolio-grid");
+      const pillsContainer = document.getElementById("portfolio-filter-pills");
+      const allMedia = window.store.getAll("media");
+      const allProjects = window.store.getAll("projects");
+
+      // Extract unique categories from projects
+      const categories = ["Semua", ...new Set(allProjects.map(p => p.eventType).filter(Boolean))];
+      let activeCategory = "Semua";
+
+      function renderPills() {
+        pillsContainer.innerHTML = categories.map(cat => `
+          <button type="button" class="btn ${cat === activeCategory ? 'btn-primary' : 'btn-secondary'} btn-sm" data-category="${window.escapeHtml(cat)}">
+            ${window.escapeHtml(cat)}
+          </button>
+        `).join("");
+
+        pillsContainer.querySelectorAll("[data-category]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            activeCategory = btn.getAttribute("data-category");
+            renderPills();
+            renderGrid();
+          });
+        });
+      }
+
+      function renderGrid() {
+        let filtered = allMedia;
+        if (activeCategory !== "Semua") {
+          const matchingProjectIds = allProjects.filter(p => p.eventType === activeCategory).map(p => p.id);
+          filtered = allMedia.filter(m => matchingProjectIds.includes(m.projectId));
+        }
+
+        if (!filtered.length) {
+          grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--c-muted);padding:40px;">Belum ada media pada kategori ini.</p>';
+          return;
+        }
+
+        grid.innerHTML = filtered.map(m => {
+          const proj = allProjects.find(p => p.id === m.projectId);
+          const caption = `${m.fileName} — ${proj ? proj.name : 'Dokumentasi Visual'}`;
+
+          return `
+            <div class="portfolio-card" data-img="${window.escapeHtml(m.image)}" data-caption="${window.escapeHtml(caption)}">
+              <div class="portfolio-img">
+                <img src="${window.escapeHtml(m.image)}" alt="${window.escapeHtml(m.fileName)}" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\\'placeholder-img\\'>Foto Dokumentasi</div>';" loading="lazy">
+              </div>
+              <div class="portfolio-info">
+                <div>
+                  <div class="portfolio-title">${window.escapeHtml(m.fileName)}</div>
+                  <div class="portfolio-type">${window.escapeHtml(proj ? proj.eventType : 'Dokumentasi Acara')}</div>
+                </div>
+                <span class="btn btn-ghost btn-sm" style="color:var(--c-accent);padding:4px 8px;">Perbesar &rarr;</span>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        grid.querySelectorAll(".portfolio-card").forEach(card => {
+          card.addEventListener("click", () => {
+            openLightbox(card.getAttribute("data-img"), card.getAttribute("data-caption"));
+          });
+        });
+      }
+
+      function openLightbox(src, caption) {
+        const lightbox = document.getElementById("portfolio-lightbox");
+        const img = document.getElementById("lightbox-img");
+        const cap = document.getElementById("lightbox-caption");
+
+        img.src = src;
+        img.alt = caption;
+        cap.textContent = caption;
+        lightbox.classList.add("open");
+      }
+
+      const lightbox = document.getElementById("portfolio-lightbox");
+      const closeBtn = document.getElementById("lightbox-close-btn");
+      closeBtn.addEventListener("click", () => lightbox.classList.remove("open"));
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) lightbox.classList.remove("open");
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && lightbox.classList.contains("open")) {
+          lightbox.classList.remove("open");
+        }
+      });
+
+      renderPills();
+      renderGrid();
+    });
+  </script>
+</body>
+</html>
