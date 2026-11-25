@@ -103,6 +103,24 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--c-primary-light);
+  color: var(--c-ink);
 }
 
 html {
@@ -1097,6 +1115,10 @@ textarea {
   gap: 24px;
 }
 
+.grid>* {
+  min-width: 0;
+}
+
 @media (min-width: 640px) {
   .grid-2 {
     grid-template-columns: repeat(2, 1fr);
@@ -1995,6 +2017,8 @@ textarea {
 
 /* ================== TABLES ================== */
 .table-wrap {
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
   background: var(--c-surface);
   border: 1px solid var(--c-line);
@@ -2037,6 +2061,10 @@ tr:hover td {
 .app-layout {
   display: grid;
   min-height: calc(100vh - var(--header-h));
+}
+
+.app-layout>* {
+  min-width: 0;
 }
 
 @media (min-width: 900px) {
@@ -2141,8 +2169,17 @@ tr:hover td {
 
 .app-main {
   flex: 1;
-  padding: 36px 24px;
+  width: 100%;
+  min-width: 0;
+  padding: 24px 16px;
   max-width: 1300px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .app-main {
+    padding: 32px 24px;
+  }
 }
 
 @media (min-width: 900px) {
@@ -2457,4 +2494,51 @@ tr:hover td {
   font-size: 0.88rem;
   padding: 24px;
   text-align: center;
+}
+
+@media (max-width: 639px) {
+  .app-main .card-body {
+    padding: 20px 16px !important;
+  }
+  .app-main .section-header {
+    margin-bottom: 20px !important;
+  }
+  .btn-lg {
+    padding: 13px 20px;
+    font-size: 0.95rem;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-bar .btn,
+  .filter-select,
+  .filter-search {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .dialog-overlay {
+    padding: 16px;
+  }
+  .dialog-header,
+  .dialog-body,
+  .dialog-footer {
+    padding: 16px;
+  }
+  .dialog-footer {
+    flex-wrap: wrap;
+  }
+  .toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+  th, td {
+    padding: 12px 12px;
+    font-size: 0.85rem;
+  }
 }

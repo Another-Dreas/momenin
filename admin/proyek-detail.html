@@ -102,7 +102,7 @@
       </div>
 
       <!-- Section Album Terkait -->
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
         <h3 style="font-size:1.4rem;">Album Dokumentasi Proyek Ini</h3>
         <button class="btn btn-secondary btn-sm" id="btn-create-album">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -171,7 +171,7 @@
           membersList.innerHTML = memberIds.map(id => {
             const u = allUsers.find(x => x.id === id);
             return `
-              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--c-bg);border-radius:var(--radius-sm);margin-bottom:8px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:8px 12px;background:var(--c-bg);border-radius:var(--radius-sm);margin-bottom:8px;">
                 <div>
                   <strong>${window.escapeHtml(u ? u.name : id)}</strong>
                   <div style="font-size:0.8rem;color:var(--c-muted);">${window.escapeHtml(u ? u.email : '')}</div>
