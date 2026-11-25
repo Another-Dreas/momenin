@@ -159,7 +159,7 @@
                 ${window.formatRupiah(pkg.priceIdr)}
               </div>
               <ul style="list-style:none;padding:0;margin:0;font-size:0.88rem;color:var(--c-muted);display:flex;flex-direction:column;gap:8px;">
-                ${(pkg.features || []).map(f => `<li>✓ ${window.escapeHtml(f)}</li>`).join("")}
+                ${(pkg.features || []).map(f => `<li style="display:flex;align-items:center;gap:8px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--c-primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>${window.escapeHtml(f)}</span></li>`).join("")}
               </ul>
             </div>
             <div style="padding:16px 24px;border-top:1px solid var(--c-line);background:var(--c-bg);">

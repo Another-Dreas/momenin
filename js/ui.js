@@ -165,7 +165,7 @@
         </div>
         <div class="dialog-body" id="checkout-modal-body" style="padding:24px;">
           <!-- Detail Pesanan -->
-          <div style="background:#f9f6f0;border:1px solid var(--c-line);border-radius:var(--radius-card);padding:18px;margin-bottom:20px;">
+          <div style="background:var(--c-muted-bg);border:1px solid var(--c-line);border-radius:var(--radius-card);padding:18px;margin-bottom:20px;">
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:0.9rem;">
               <span style="color:var(--c-muted);">No. Pesanan / Invoice:</span>
               <strong>${escapeHtml(codeId)}</strong>
@@ -181,7 +181,7 @@
             </div>` : ''}
             <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px dashed var(--c-line);margin-top:8px;">
               <span style="font-weight:600;color:var(--c-ink);">Total Pembayaran:</span>
-              <span style="font-family:var(--font-heading);font-size:1.6rem;font-weight:700;color:var(--c-accent);">${formattedAmount}</span>
+              <span style="font-family:var(--font-heading);font-size:1.6rem;font-weight:700;color:var(--c-primary);">${formattedAmount}</span>
             </div>
           </div>
 
@@ -189,8 +189,8 @@
           <div style="margin-bottom:20px;">
             <label class="form-label" style="margin-bottom:10px;">Pilih Metode Pembayaran</label>
             <div style="display:grid;gap:10px;">
-              <label style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--c-accent);background:var(--c-accent-light);border-radius:var(--radius-sm);cursor:pointer;">
-                <input type="radio" name="pay-method" value="bca" checked style="accent-color:var(--c-accent);">
+              <label style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--c-primary);background:var(--c-muted-bg);border-radius:var(--radius-sm);cursor:pointer;">
+                <input type="radio" name="pay-method" value="bca" checked style="accent-color:var(--c-primary);">
                 <div style="flex:1;">
                   <strong style="display:block;font-size:0.92rem;color:var(--c-ink);">BCA Virtual Account</strong>
                   <span style="font-size:0.8rem;color:var(--c-muted);">No. VA: <strong>8277 0812 3456 7890</strong> (Otomatis)</span>
@@ -199,7 +199,7 @@
               </label>
 
               <label style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--c-line);border-radius:var(--radius-sm);cursor:pointer;">
-                <input type="radio" name="pay-method" value="mandiri" style="accent-color:var(--c-accent);">
+                <input type="radio" name="pay-method" value="mandiri" style="accent-color:var(--c-primary);">
                 <div style="flex:1;">
                   <strong style="display:block;font-size:0.92rem;color:var(--c-ink);">Mandiri Virtual Account</strong>
                   <span style="font-size:0.8rem;color:var(--c-muted);">No. VA: <strong>8890 0812 3456 7890</strong></span>
@@ -208,7 +208,7 @@
               </label>
 
               <label style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--c-line);border-radius:var(--radius-sm);cursor:pointer;">
-                <input type="radio" name="pay-method" value="qris" style="accent-color:var(--c-accent);">
+                <input type="radio" name="pay-method" value="qris" style="accent-color:var(--c-primary);">
                 <div style="flex:1;">
                   <strong style="display:block;font-size:0.92rem;color:var(--c-ink);">QRIS (GoPay, OVO, ShopeePay, Dana, BCA Mobile)</strong>
                   <span style="font-size:0.8rem;color:var(--c-muted);">Scan QR Code langsung dari smartphone Anda</span>
@@ -217,7 +217,7 @@
               </label>
 
               <label style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--c-line);border-radius:var(--radius-sm);cursor:pointer;">
-                <input type="radio" name="pay-method" value="cc" style="accent-color:var(--c-accent);">
+                <input type="radio" name="pay-method" value="cc" style="accent-color:var(--c-primary);">
                 <div style="flex:1;">
                   <strong style="display:block;font-size:0.92rem;color:var(--c-ink);">Kartu Kredit / Debit Visa & Mastercard</strong>
                   <span style="font-size:0.8rem;color:var(--c-muted);">Enkripsi keamanan 256-bit SSL</span>
@@ -226,7 +226,7 @@
             </div>
           </div>
 
-          <div style="background:#eaf3ec;border:1px solid #c9e2cf;border-radius:var(--radius-sm);padding:12px;font-size:0.85rem;color:var(--c-success);display:flex;align-items:center;gap:8px;">
+          <div style="background:rgba(40,122,85,0.08);border:1px solid rgba(40,122,85,0.25);border-radius:var(--radius-sm);padding:12px;font-size:0.85rem;color:var(--c-success);display:flex;align-items:center;gap:8px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             <span>Koneksi transaksi aman & terverifikasi otomatis.</span>
           </div>
@@ -254,7 +254,7 @@
       
       modalBody.innerHTML = `
         <div style="text-align:center;padding:48px 24px;">
-          <div style="width:52px;height:52px;border:4px solid var(--c-line);border-top-color:var(--c-accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px;"></div>
+          <div style="width:52px;height:52px;border:4px solid var(--c-line);border-top-color:var(--c-primary);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px;"></div>
           <h3 style="font-size:1.3rem;margin-bottom:8px;">Memverifikasi Pembayaran...</h3>
           <p style="color:var(--c-muted);font-size:0.95rem;">Mohon jangan menutup jendela ini selagi sistem memproses transaksi Anda.</p>
         </div>
@@ -264,7 +264,7 @@
       setTimeout(() => {
         modalBody.innerHTML = `
           <div style="text-align:center;padding:40px 24px;">
-            <div style="width:64px;height:64px;border-radius:50%;background:#eaf3ec;color:var(--c-success);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+            <div style="width:64px;height:64px;border-radius:50%;background:rgba(40,122,85,0.12);color:var(--c-success);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <h3 style="font-size:1.6rem;color:var(--c-ink);margin-bottom:8px;">Pembayaran Berhasil!</h3>
@@ -288,7 +288,7 @@
   }
 
   // Download simulation triggering an actual file download in browser
-  function downloadMockFile(fileName, contentText = "Dokumentasi Momenin Studio") {
+  function downloadMockFile(fileName, contentText = "Dokumentasi Momenin") {
     const blob = new Blob([contentText], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");

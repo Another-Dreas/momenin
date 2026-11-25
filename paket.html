@@ -37,7 +37,7 @@
     </section>
 
     <!-- KELOMPOK 2: PAKET PERSONAL STORAGE (BULANAN) -->
-    <section class="section" style="background:#f6f1e8;" id="section-storage">
+    <section class="section" style="background:var(--c-muted-bg);" id="section-storage">
       <div class="container">
         <div class="section-header">
           <span class="section-eyebrow">Arsip Digital Mandiri</span>
@@ -113,7 +113,7 @@
           const targetUrl = session ? "app/paket-saya.html" : `login.html?next=${encodeURIComponent('app/paket-saya.html')}`;
 
           return `
-            <div class="card" style="padding:24px;text-align:center;background:#fff;">
+            <div class="card" style="padding:24px;text-align:center;background:var(--c-surface);">
               <h3 class="card-title" style="font-size:1.4rem;margin-bottom:6px;">${window.escapeHtml(sp.name)}</h3>
               <div style="font-family:var(--font-heading);font-size:1.8rem;font-weight:700;color:var(--c-ink);margin-bottom:4px;">
                 ${window.formatRupiah(sp.priceIdr)}

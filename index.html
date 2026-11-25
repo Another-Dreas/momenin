@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
   <!-- Global Header via layout.js -->
@@ -52,8 +52,14 @@
         </div>
 
         <div class="hero-visual">
+          <!-- Bayangan kertas kedua di belakang -->
+          <div class="hero-main-card-shadow" aria-hidden="true"></div>
+
+          <!-- Kartu foto polaroid utama -->
           <div class="hero-main-card">
-            <img src="https://picsum.photos/seed/momenin-hero-wedding/800/1000" alt="Dokumentasi pernikahan hangat Momenin" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'placeholder-img\' style=\'aspect-ratio:4/5;border-radius:12px;\'><span>Dokumentasi Pernikahan & Acara Spesial</span></div>';" loading="eager">
+            <div class="hero-img-wrap">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=1000&fit=crop&auto=format" alt="Dokumentasi pernikahan hangat Momenin" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'placeholder-img\' style=\'aspect-ratio:4/5;border-radius:12px;\'><span>Dokumentasi Pernikahan & Acara Spesial</span></div>';" loading="eager">
+            </div>
             <div class="hero-card-caption">
               <div>
                 <div class="hero-caption-title">Pernikahan & Prewedding</div>
@@ -62,6 +68,7 @@
               <span class="badge badge-primary">Tersedia</span>
             </div>
           </div>
+
 
           <!-- Floating badge top -->
           <div class="hero-float-badge badge-top">
@@ -141,7 +148,7 @@
     </section>
 
     <!-- WORKFLOW SECTION -->
-    <section class="section" style="background:#f5efe5;" id="workflow-section">
+    <section class="section" style="background:var(--c-muted-bg);" id="workflow-section">
       <div class="container">
         <div class="section-header">
           <span class="section-eyebrow">Proses Nyaman & Jelas</span>
@@ -200,7 +207,7 @@
     </section>
 
     <!-- PORTFOLIO SECTION -->
-    <section class="section" style="background:#f7f2ea;" id="portofolio-section">
+    <section class="section" style="background:var(--c-bg);" id="portofolio-section">
       <div class="container">
         <div class="section-header">
           <span class="section-eyebrow">Galeri Kenangan</span>
@@ -224,7 +231,7 @@
     <!-- TESTIMONIAL / STORY SECTION -->
     <section class="section" id="story-section">
       <div class="container">
-        <div style="max-width:860px;margin:0 auto;text-align:center;background:var(--c-surface);padding:48px 36px;border-radius:var(--radius-card);border:1px solid var(--c-line);box-shadow:var(--shadow-soft);">
+        <div class="story-box">
           <span class="badge badge-primary" style="margin-bottom:16px;">Pengalaman Klien Momenin</span>
           <blockquote style="font-family:var(--font-heading);font-size:clamp(1.4rem, 2.5vw, 1.85rem);font-style:italic;line-height:1.55;color:var(--c-ink);margin-bottom:24px;">
             "Dokumentasi pernikahan kami terasa sangat hidup. Tim fotografer sangat mengayomi keluarga, dan album digitalnya memudahkan kami berbagi ke saudara di luar kota tanpa repot."
@@ -297,8 +304,8 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Scripts -->
-  <script src="js/data.js"></script>
-  <script src="js/store.js"></script>
+  <script src="js/data.js?v=2"></script>
+  <script src="js/store.js?v=2"></script>
   <script src="js/auth.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/layout.js"></script>

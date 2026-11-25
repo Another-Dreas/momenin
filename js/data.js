@@ -6,11 +6,11 @@ window.MOMENIN_SEED = {
     { id: "usr-004", name: "Admin Momenin", email: "admin@momenin.id", password: "admin1234", role: "admin", status: "active", phone: "0812-3456-7800", createdAt: "2024-01-01" }
   ],
   services: [
-    { id: "svc-001", slug: "pernikahan", name: "Dokumentasi Pernikahan", category: "Pernikahan", description: "Tim dokumentasi untuk hari pernikahan: prosesi, resepsi, dan momen kebersamaan keluarga.", image: "https://picsum.photos/seed/momenin-wedding/900/700", active: true },
-    { id: "svc-002", slug: "prewedding", name: "Sesi Prewedding", category: "Pernikahan", description: "Sesi foto pasangan sebelum hari pernikahan di lokasi pilihan Anda.", image: "https://picsum.photos/seed/momenin-prewedding/900/700", active: true },
-    { id: "svc-003", slug: "wisuda", name: "Dokumentasi Wisuda", category: "Akademik", description: "Abadikan momen kelulusan bersama keluarga dan teman.", image: "https://picsum.photos/seed/momenin-graduation/900/700", active: true },
-    { id: "svc-004", slug: "acara-keluarga", name: "Acara Keluarga & Ulang Tahun", category: "Keluarga", description: "Ulang tahun, syukuran, dan acara keluarga kecil dengan dokumentasi hangat.", image: "https://picsum.photos/seed/momenin-family/900/700", active: true },
-    { id: "svc-005", slug: "korporat", name: "Dokumentasi Korporat", category: "Korporat", description: "Seminar, gathering, dan peluncuran produk untuk kebutuhan perusahaan.", image: "https://picsum.photos/seed/momenin-corporate/900/700", active: true }
+    { id: "svc-001", slug: "pernikahan", name: "Dokumentasi Pernikahan", category: "Pernikahan", description: "Tim dokumentasi untuk hari pernikahan: prosesi, resepsi, dan momen kebersamaan keluarga.", image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&h=700&fit=crop&auto=format", active: true },
+    { id: "svc-002", slug: "prewedding", name: "Sesi Prewedding", category: "Pernikahan", description: "Sesi foto pasangan sebelum hari pernikahan di lokasi pilihan Anda.", image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&h=700&fit=crop&auto=format", active: true },
+    { id: "svc-003", slug: "wisuda", name: "Dokumentasi Wisuda", category: "Akademik", description: "Abadikan momen kelulusan bersama keluarga dan teman.", image: "https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?w=900&h=700&fit=crop&auto=format", active: true },
+    { id: "svc-004", slug: "acara-keluarga", name: "Acara Keluarga & Ulang Tahun", category: "Keluarga", description: "Ulang tahun, syukuran, dan acara keluarga kecil dengan dokumentasi hangat.", image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=900&h=700&fit=crop&auto=format", active: true },
+    { id: "svc-005", slug: "korporat", name: "Dokumentasi Korporat", category: "Korporat", description: "Seminar, gathering, dan peluncuran produk untuk kebutuhan perusahaan.", image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=900&h=700&fit=crop&auto=format", active: true }
   ],
   packages: [
     { id: "pkg-001", serviceId: "svc-001", name: "Mini", priceIdr: 300000, features: ["1 fotografer profesional", "Sesi sampai 1 jam", "Album digital cloud dasar", "Unduh resolusi tinggi"], active: true },
@@ -38,18 +38,18 @@ window.MOMENIN_SEED = {
     { id: "alb-005", projectId: "prj-005", name: "Wisuda Bimo", description: "Momen kelulusan sarjana.", coverMediaId: "med-012" }
   ],
   media: [
-    { id: "med-001", albumId: "alb-001", projectId: "prj-002", fileName: "prewedding-01.jpg", type: "image/jpeg", sizeBytes: 2457600, image: "https://picsum.photos/seed/momenin-med-001/900/700", sortOrder: 1 },
-    { id: "med-002", albumId: "alb-001", projectId: "prj-002", fileName: "prewedding-02.jpg", type: "image/jpeg", sizeBytes: 3110400, image: "https://picsum.photos/seed/momenin-med-002/900/700", sortOrder: 2 },
-    { id: "med-003", albumId: "alb-001", projectId: "prj-002", fileName: "prewedding-03.jpg", type: "image/jpeg", sizeBytes: 2785280, image: "https://picsum.photos/seed/momenin-med-003/900/700", sortOrder: 3 },
-    { id: "med-004", albumId: "alb-002", projectId: "prj-001", fileName: "persiapan-01.jpg", type: "image/jpeg", sizeBytes: 2816000, image: "https://picsum.photos/seed/momenin-med-004/900/700", sortOrder: 1 },
-    { id: "med-005", albumId: "alb-002", projectId: "prj-001", fileName: "persiapan-02.jpg", type: "image/jpeg", sizeBytes: 2560000, image: "https://picsum.photos/seed/momenin-med-005/900/700", sortOrder: 2 },
-    { id: "med-006", albumId: "alb-002", projectId: "prj-001", fileName: "persiapan-03.jpg", type: "image/jpeg", sizeBytes: 2949120, image: "https://picsum.photos/seed/momenin-med-006/900/700", sortOrder: 3 },
-    { id: "med-007", albumId: "alb-003", projectId: "prj-003", fileName: "seminar-01.jpg", type: "image/jpeg", sizeBytes: 3317760, image: "https://picsum.photos/seed/momenin-med-007/900/700", sortOrder: 1 },
-    { id: "med-008", albumId: "alb-003", projectId: "prj-003", fileName: "seminar-02.jpg", type: "image/jpeg", sizeBytes: 2621440, image: "https://picsum.photos/seed/momenin-med-008/900/700", sortOrder: 2 },
-    { id: "med-009", albumId: "alb-003", projectId: "prj-003", fileName: "seminar-03.jpg", type: "image/jpeg", sizeBytes: 3145728, image: "https://picsum.photos/seed/momenin-med-009/900/700", sortOrder: 3 },
-    { id: "med-010", albumId: "alb-004", projectId: "prj-004", fileName: "ultah-01.jpg", type: "image/jpeg", sizeBytes: 3670016, image: "https://picsum.photos/seed/momenin-med-010/900/700", sortOrder: 1 },
-    { id: "med-011", albumId: "alb-004", projectId: "prj-004", fileName: "ultah-02.jpg", type: "image/jpeg", sizeBytes: 2867200, image: "https://picsum.photos/seed/momenin-med-011/900/700", sortOrder: 2 },
-    { id: "med-012", albumId: "alb-005", projectId: "prj-005", fileName: "wisuda-01.jpg", type: "image/jpeg", sizeBytes: 3276800, image: "https://picsum.photos/seed/momenin-med-012/900/700", sortOrder: 1 }
+    { id: "med-001", albumId: "alb-001", projectId: "prj-002", fileName: "prewedding-01.jpg", type: "image/jpeg", sizeBytes: 2457600, image: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=900&h=700&fit=crop&auto=format", sortOrder: 1 },
+    { id: "med-002", albumId: "alb-001", projectId: "prj-002", fileName: "prewedding-02.jpg", type: "image/jpeg", sizeBytes: 3110400, image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&h=700&fit=crop&auto=format", sortOrder: 2 },
+    { id: "med-003", albumId: "alb-001", projectId: "prj-002", fileName: "prewedding-03.jpg", type: "image/jpeg", sizeBytes: 2785280, image: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=900&h=700&fit=crop&auto=format", sortOrder: 3 },
+    { id: "med-004", albumId: "alb-002", projectId: "prj-001", fileName: "persiapan-01.jpg", type: "image/jpeg", sizeBytes: 2816000, image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&h=700&fit=crop&auto=format", sortOrder: 1 },
+    { id: "med-005", albumId: "alb-002", projectId: "prj-001", fileName: "persiapan-02.jpg", type: "image/jpeg", sizeBytes: 2560000, image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&h=700&fit=crop&auto=format", sortOrder: 2 },
+    { id: "med-006", albumId: "alb-002", projectId: "prj-001", fileName: "persiapan-03.jpg", type: "image/jpeg", sizeBytes: 2949120, image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900&h=700&fit=crop&auto=format", sortOrder: 3 },
+    { id: "med-007", albumId: "alb-003", projectId: "prj-003", fileName: "seminar-01.jpg", type: "image/jpeg", sizeBytes: 3317760, image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=900&h=700&fit=crop&auto=format", sortOrder: 1 },
+    { id: "med-008", albumId: "alb-003", projectId: "prj-003", fileName: "seminar-02.jpg", type: "image/jpeg", sizeBytes: 2621440, image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&h=700&fit=crop&auto=format", sortOrder: 2 },
+    { id: "med-009", albumId: "alb-003", projectId: "prj-003", fileName: "seminar-03.jpg", type: "image/jpeg", sizeBytes: 3145728, image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&h=700&fit=crop&auto=format", sortOrder: 3 },
+    { id: "med-010", albumId: "alb-004", projectId: "prj-004", fileName: "ultah-01.jpg", type: "image/jpeg", sizeBytes: 3670016, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=900&h=700&fit=crop&auto=format", sortOrder: 1 },
+    { id: "med-011", albumId: "alb-004", projectId: "prj-004", fileName: "ultah-02.jpg", type: "image/jpeg", sizeBytes: 2867200, image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=900&h=700&fit=crop&auto=format", sortOrder: 2 },
+    { id: "med-012", albumId: "alb-005", projectId: "prj-005", fileName: "wisuda-01.jpg", type: "image/jpeg", sizeBytes: 3276800, image: "https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?w=900&h=700&fit=crop&auto=format", sortOrder: 1 }
   ],
   subscriptions: [
     { id: "sub-001", userId: "usr-001", planId: "sp-002", status: "aktif", periodStart: "2024-01-12", periodEnd: "2025-01-12" },

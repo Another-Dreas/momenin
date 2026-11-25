@@ -1,5 +1,5 @@
 ;(function () {
-  const KEY = "momenin_data_v2";
+  const KEY = "momenin_data_v4";
 
   function normalizeEntity(entity) {
     if (!entity) return "";
